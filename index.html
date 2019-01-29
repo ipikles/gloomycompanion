@@ -28,6 +28,7 @@
                 <ul class="tabcontainer">
                     <li id="scenariotab">Scenario</li>
                     <li id="deckstab">Decks</li>
+                    <li id="uitab">UI</li>
                 </ul>
                 <div id="scenariospage" class="tabbody">
                     <input id="showmodifierdeck" type="checkbox" checked /><label for="showmodifierdeck">Show Monster Modifier Deck</label>
@@ -37,12 +38,12 @@
                     </p>
                 </div>
                 <div id="deckspage" class="tabbody">
-                    <div style="padding: 5px 0px">
-                        <label for="card-scale-range">Scale decks sizes</label>
-                        <input id="card-scale-range" type="range" value="1" min="0.5" max="1.5" step="0.1" />
-                    </div>
                     <input id="showmodifierdeck-deckspage" type="checkbox" checked /><label for="showmodifierdeck-deckspage">Show Monster Modifier Deck</label>
                     <input id="applydecks" type="button" value="Apply" />
+                </div>
+                <div id="uipage" class="tabbody">
+                    <label for="card-scale-range">Scale decks sizes</label>
+                    <input id="card-scale-range" type="range" value="1" min="0.5" max="1.5" step="0.1" style="display: block; width: 100%" />
                 </div>
             </div>
             <div id="cancelarea">
