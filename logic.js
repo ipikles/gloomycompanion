@@ -1122,6 +1122,11 @@ function ScenarioList(scenarios) {
     return scenariolist;
 }
 
+function onDeckScaleChanged(e) {
+    document.documentElement.style.setProperty('--card-scale', this.value);
+    refresh_ui();
+}
+
 function init() {
     var deckspage = document.getElementById("deckspage");
     var scenariospage = document.getElementById("scenariospage");
@@ -1129,12 +1134,15 @@ function init() {
     var applyscenariobtn = document.getElementById("applyscenario");
     var applyloadbtn = document.getElementById("applyload");
     var showmodifierdeck = document.getElementById("showmodifierdeck");
+    var cardScaleRange = document.getElementById("card-scale-range");
 
     var decklist = new DeckList();
     var scenariolist = new ScenarioList(SCENARIO_DEFINITIONS);
 
     deckspage.insertAdjacentElement("afterbegin", decklist.ul);
     scenariospage.insertAdjacentElement("afterbegin", scenariolist.ul);
+
+    cardScaleRange.addEventListener('change', onDeckScaleChanged);
 
     applydeckbtn.onclick = function () {
         localStorage.clear();

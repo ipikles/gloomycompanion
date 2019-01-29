@@ -1,3 +1,6 @@
+:root {
+    --card-scale: 1;
+}
 
 @font-face
 {
@@ -26,6 +29,7 @@
 
     width:                      453px;
     width:                      calc(437px + 1rem); /* 437px == card image width */
+    width:                      calc(437px * var(--card-scale) + 1rem);
     max-width:                  147.6vh;
     margin:                     8px;
 }
