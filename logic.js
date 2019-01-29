@@ -1127,13 +1127,18 @@ function onDeckScaleChanged(e) {
     refresh_ui();
 }
 
+function onToggleMonsterModifierDeckChanged(e) {
+    var modifier_deck_section = document.getElementById("modifier-container");
+    modifier_deck_section.style.display = this.checked ? "block" : "none";
+}
+
 function init() {
     var deckspage = document.getElementById("deckspage");
     var scenariospage = document.getElementById("scenariospage");
     var applydeckbtn = document.getElementById("applydecks");
     var applyscenariobtn = document.getElementById("applyscenario");
     var applyloadbtn = document.getElementById("applyload");
-    var showmodifierdeck = document.getElementById("showmodifierdeck");
+    var showmodifierdeck = document.getElementById("modifier-deck-visible");
     var cardScaleRange = document.getElementById("card-scale-range");
 
     var decklist = new DeckList();
@@ -1143,6 +1148,7 @@ function init() {
     scenariospage.insertAdjacentElement("afterbegin", scenariolist.ul);
 
     cardScaleRange.addEventListener('change', onDeckScaleChanged);
+    showmodifierdeck.addEventListener('change', onToggleMonsterModifierDeckChanged);
 
     applydeckbtn.onclick = function () {
         localStorage.clear();
@@ -1152,14 +1158,9 @@ function init() {
             return load_ability_deck(deck_names.class, deck_names.name, deck_names.level);
         });
         apply_deck_selection(selected_decks, true);
-        var showmodifierdeck_deckspage = document.getElementById("showmodifierdeck-deckspage");
+
         var modifier_deck_section = document.getElementById("modifier-container");
-        if(!showmodifierdeck_deckspage.checked){
-            modifier_deck_section.style.display = "none";
-        }
-        else{
-            modifier_deck_section.style.display = "block";
-        }
+        modifier_deck_section.style.display = showmodifierdeck.checked ? "block" : "none";
     };
 
     applyscenariobtn.onclick = function () {
@@ -1171,13 +1172,9 @@ function init() {
             return load_ability_deck(deck_names.class, deck_names.name, deck_names.level);
         });
         apply_deck_selection(selected_decks, false);
+        
         var modifier_deck_section = document.getElementById("modifier-container");
-        if(!showmodifierdeck.checked){
-            modifier_deck_section.style.display = "none";
-        }
-        else{
-            modifier_deck_section.style.display = "block";
-        }
+        modifier_deck_section.style.display = showmodifierdeck.checked ? "block" : "none";
 
         // assume user is ready to go, so hide the Settings menu
         show_settingspane(settingspane, cancelarea, false);
@@ -1190,13 +1187,12 @@ function init() {
             return load_ability_deck(deck_names.class, deck_names.name, deck_names.level);
         });
         apply_deck_selection(selected_decks, true);
+        
         var modifier_deck_section = document.getElementById("modifier-container");
-        if(!showmodifierdeck.checked){
-            modifier_deck_section.style.display = "none";
-        }
-        else{
-            modifier_deck_section.style.display = "block";
-        }
+        modifier_deck_section.style.display = showmodifierdeck.checked ? "block" : "none";
+
+        // assume user is ready to go, so hide the Settings menu
+        show_settingspane(settingspane, cancelarea, false);
     }
 
     window.onresize = refresh_ui.bind(null, visible_ability_decks);

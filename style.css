@@ -32,6 +32,11 @@ input[type="number"] {
     min-width: 20px;
 }
 
+input[type=range] {
+    display: block;
+    width: 100%;
+}
+
 #tableau
 {
     display:            -webkit-box;
@@ -194,4 +199,8 @@ li.currentdeck a:hover {
 #settingsbtn:focus {
     outline: 0 none;
     background: #555;
+}
+
+.ui-settings-item {
+    margin-bottom: 20px;
 }
